@@ -54,7 +54,9 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+Architecture type 1: Customer_address table has customer ID, name, address, address type (mailing vs residential). The address value for each customer is overwritten every time there's a change to the address info. This table can contain at maximum one mailing and one residential address record per customer.
+
+Architecture type 2: Customer_address table has customer ID, name, address, address type, and address start and end dates. For every change/update in the address of each customer, a new row is added to the table with its associated address start date. The older address info is kept in previous rows, with possible updates to the associated end date. This allows for the table to contain multiple (residential and mailing) addresses per customer with address history retained.
 ```
 
 ***
